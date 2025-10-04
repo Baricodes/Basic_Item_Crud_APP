@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login • FastAPI CRUD Frontend</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="nav">
+  <div class="nav-inner container">
+    <div class="brand">FastAPI Demo</div>
+    <div class="tabs">
+      <a href="register.html" class="tab" data-tab="register">Register</a>
+      <a href="login.html" class="tab" data-tab="login">Login</a>
+    </div>
+    <div class="right">
+      <span id="auth-indicator" class="hint">Logged out</span>
+      <button class="btn ghost" id="logout-btn" style="display:none">Log out</button>
+    </div>
+  </div>
+</div>
+  <main class="container stack" style="margin-top: 20px;">
+    
+<section class="route active">
+  <div class="panel stack">
+    <h2 style="margin:0">Log in</h2>
+    <p class="hint">On success, your JWT is stored in <code>localStorage</code> and used for item CRUD.</p>
+    <div id="login-status" class="status"></div>
+    <div class="grid two">
+      <div class="stack">
+        <label>Username</label>
+        <input id="login-username" placeholder="jane_doe" autocomplete="username" />
+      </div>
+      <div class="stack">
+        <label>Password</label>
+        <input id="login-password" type="password" placeholder="••••••••" autocomplete="current-password" />
+      </div>
+    </div>
+    <button class="btn primary" id="login-btn">Login</button>
+  </div>
+</section>
+
+    <div class="footer">Static site, deployable to S3 + CloudFront • Neutral, minimal theme</div>
+  </main>
+  <script type="module" src="js/login.js"></script>
+</body>
+</html>

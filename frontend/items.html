@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Items • FastAPI CRUD Frontend</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="nav">
+  <div class="nav-inner container">
+    <div class="brand">FastAPI Demo</div>
+    <div class="tabs">
+      <a href="register.html" class="tab" data-tab="register">Register</a>
+      <a href="login.html" class="tab" data-tab="login">Login</a>
+    </div>
+    <div class="right">
+      <span id="auth-indicator" class="hint">Logged out</span>
+      <button class="btn ghost" id="logout-btn" style="display:none">Log out</button>
+    </div>
+  </div>
+</div>
+  <main class="container stack" style="margin-top: 20px;">
+    
+<section class="route active">
+  <div class="panel stack">
+    <div style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
+      <h2 style="margin:0">Items</h2>
+      <div class="row-actions">
+        <button class="btn" id="refresh-items">Refresh</button>
+      </div>
+    </div>
+    <div id="items-status" class="status"></div>
+
+    <!-- Create -->
+    <div class="stack" style="margin-top:6px;">
+      <h3 style="margin:0">Create Item</h3>
+      <div class="grid two">
+        <div class="stack">
+          <label>Name</label>
+          <input id="item-name" placeholder="My item" />
+        </div>
+        <div class="stack">
+          <label>Description</label>
+          <input id="item-desc" placeholder="Short description" />
+        </div>
+      </div>
+      <div style="display:flex; gap:8px; align-items:center;">
+        <button class="btn primary" id="create-item">Create</button>
+        <span class="hint">Items are scoped to the logged-in user via your backend.</span>
+      </div>
+    </div>
+
+    <!-- List -->
+    <div class="stack" style="margin-top:10px;">
+      <h3 style="margin:0">Your Items</h3>
+      <div class="panel" style="padding:0; overflow:auto;">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:28%">ID</th>
+              <th style="width:20%">Name</th>
+              <th>Description</th>
+              <th style="width:190px">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="items-tbody">
+            <tr><td colspan="4" class="hint" style="padding:14px;">No items yet.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <div class="footer">Static site, deployable to S3 + CloudFront • Neutral, minimal theme</div>
+  </main>
+  <script type="module" src="js/items.js"></script>
+</body>
+</html>

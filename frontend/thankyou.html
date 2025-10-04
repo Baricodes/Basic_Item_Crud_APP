@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thanks • FastAPI CRUD Frontend</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .center-card { max-width: 560px; margin: 10vh auto; }
+  </style>
+</head>
+<body>
+  <div class="nav">
+    <div class="nav-inner container">
+      <div class="brand">FastAPI Demo</div>
+      <div class="tabs">
+        <a href="register.html" class="tab" data-tab="register">Register</a>
+        <a href="login.html" class="tab" data-tab="login">Login</a>
+      </div>
+      <div class="right">
+        <span id="auth-indicator" class="hint">Logged out</span>
+        <button class="btn ghost" id="logout-btn" style="display:none">Log out</button>
+      </div>
+    </div>
+  </div>
+  <main class="container">
+    <section class="panel stack center-card">
+      <h2 style="margin:0;">Thank you for registering</h2>
+      <p class="hint">You may now log in.</p>
+      <div>
+        <a href="login.html" class="btn">Go to Login</a>
+      </div>
+    </section>
+  </main>
+  <script type="module">
+    import { setupNavbar } from './js/app.js';
+    window.addEventListener('DOMContentLoaded', () => setupNavbar('login'));
+  </script>
+</body>
+</html>
