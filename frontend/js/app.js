@@ -2,7 +2,7 @@
  * ======== CONFIG ========
  * Update API_BASE and paths below to match your FastAPI routes.
  */
-export const API_BASE = "" // My API Gateway endpoint; // e.g. https://xxxx.execute-api.us-east-2.amazonaws.com
+export const API_BASE = "/api" // API calls will be routed through CloudFront to API Gateway
 export const ENDPOINTS = {
   register: "/user/register/",   // POST {username, email, password}
   login: "/user/login/",         // POST {username, password} -> {access_token}

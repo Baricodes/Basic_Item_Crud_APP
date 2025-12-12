@@ -72,10 +72,19 @@ resource "aws_api_gateway_deployment" "main" {
   ]
 
   rest_api_id = aws_api_gateway_rest_api.main.id
-  stage_name  = var.environment
 
   lifecycle {
     create_before_destroy = true
+  }
+
+  triggers = {
+    redeployment = sha1(jsonencode([
+      aws_api_gateway_resource.proxy.id,
+      aws_api_gateway_method.proxy.id,
+      aws_api_gateway_method.root.id,
+      aws_api_gateway_integration.lambda.id,
+      aws_api_gateway_integration.lambda_root.id,
+    ]))
   }
 }
 
@@ -84,22 +93,6 @@ resource "aws_api_gateway_stage" "main" {
   deployment_id = aws_api_gateway_deployment.main.id
   rest_api_id   = aws_api_gateway_rest_api.main.id
   stage_name    = var.environment
-
-  access_log_settings {
-    destination_arn = aws_cloudwatch_log_group.api_gateway_logs.arn
-    format = jsonencode({
-      requestId      = "$requestId"
-      ip             = "$requestId"
-      caller         = "$context.identity.caller"
-      user           = "$context.identity.user"
-      requestTime    = "$requestTime"
-      httpMethod     = "$httpMethod"
-      resourcePath   = "$resourcePath"
-      status         = "$status"
-      protocol       = "$protocol"
-      responseLength = "$responseLength"
-    })
-  }
 
   tags = var.tags
 }

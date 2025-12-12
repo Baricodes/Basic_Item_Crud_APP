@@ -16,5 +16,12 @@ def get_dynamodb():
 dynamodb = get_dynamodb()
 
 # Optional: define tables here for convenience
-user_table = dynamodb.Table("users")
-item_table = dynamodb.Table("items")
+# Use environment variables for table names to match Terraform configuration
+USERS_TABLE = os.getenv("USERS_TABLE")
+ITEMS_TABLE = os.getenv("ITEMS_TABLE")
+
+if not USERS_TABLE or not ITEMS_TABLE:
+    raise ValueError("USERS_TABLE and ITEMS_TABLE environment variables must be set")
+
+user_table = dynamodb.Table(USERS_TABLE)
+item_table = dynamodb.Table(ITEMS_TABLE)

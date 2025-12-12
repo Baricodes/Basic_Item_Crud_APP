@@ -19,8 +19,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from botocore.exceptions import ClientError
 
 ALLOWED_ORIGINS = [
-    #My CloudFront Website Domain,
-    "http://localhost:5500"
+    "https://d19njcc0e7y07z.cloudfront.net",  # CloudFront website domain
+    "http://localhost:5500"  # Local development
 ]
 
 # 1) Logging first
@@ -41,8 +41,8 @@ app.add_middleware(
 app.add_middleware(RequestResponseLogger)
 
 # Register routers
-app.include_router(item_router, prefix="/item")
-app.include_router(user_router, prefix="/user")
+app.include_router(item_router, prefix="/api/item")
+app.include_router(user_router, prefix="/api/user")
 
 app.add_exception_handler(HTTPException, http_exception_handler)
 app.add_exception_handler(RequestValidationError, validation_exception_handler)
@@ -50,7 +50,7 @@ app.add_exception_handler(ClientError, client_error_handler)
 app.add_exception_handler(Exception, unhandled_exception_handler)
 
 # Healthcheck (handy for logs)
-@app.get("/health")
+@app.get("/api/health")
 def health():
     return {"status": "ok"}
 

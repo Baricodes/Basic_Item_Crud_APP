@@ -30,7 +30,7 @@ def create_item(item_data: ItemCreate,
 # Get all items for a given owner_id
 def get_items(user: UserRead):
     response = item_table.query(
-        IndexName="owner_id-index",
+        IndexName="owner-id-index",
         KeyConditionExpression=Key("owner_id").eq(user.id)
     )
     items = response.get("Items", [])

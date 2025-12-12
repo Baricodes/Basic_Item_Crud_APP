@@ -13,8 +13,7 @@ dynamodb_billing_mode = "PAY_PER_REQUEST"
 
 # CORS configuration
 allowed_origins = [
-  "http://localhost:5500",
-  "https://your-frontend-domain.com"
+  "http://localhost:5500"
 ]
 
 # Tags

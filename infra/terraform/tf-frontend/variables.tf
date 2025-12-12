@@ -40,6 +40,12 @@ variable "allowed_origins" {
   default     = ["http://localhost:5500"]
 }
 
+variable "frontend_domain" {
+  description = "Frontend domain for CORS (will be set to CloudFront domain)"
+  type        = string
+  default     = ""
+}
+
 variable "tags" {
   description = "Common tags for all resources"
   type        = map(string)

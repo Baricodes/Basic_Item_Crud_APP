@@ -67,7 +67,7 @@ def setup_dynamodb():
         ],
         global_secondary_indexes=[
             {
-                "IndexName": "owner_id-index",
+                "IndexName": "owner-id-index",
                 "KeySchema": [{"AttributeName": "owner_id", "KeyType": "HASH"}],
                 "Projection": {"ProjectionType": "ALL"},
                 "ProvisionedThroughput": {

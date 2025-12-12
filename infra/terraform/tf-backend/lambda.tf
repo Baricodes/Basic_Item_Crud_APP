@@ -78,9 +78,9 @@ resource "aws_lambda_function_url" "main" {
 
   cors {
     allow_credentials = false
-    allow_origins     = var.allowed_origins
+    allow_origins     = ["*"]
     allow_methods     = ["*"]
-    allow_headers     = ["date", "keep-alive"]
+    allow_headers     = ["date", "keep-alive", "Authorization", "Content-Type"]
     expose_headers    = ["date", "keep-alive"]
     max_age          = 86400
   }
