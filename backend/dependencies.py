@@ -9,7 +9,7 @@ import logging
 
 log = logging.getLogger("app.dependencies")
 
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/user/login/")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/user/login/")
 
 def get_current_user(token: str = Depends(oauth2_scheme)) -> UserRead:
     try:
